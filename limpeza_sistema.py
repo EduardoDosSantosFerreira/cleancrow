@@ -2,12 +2,13 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 import subprocess
 from threading import Thread
+import sys
 
 class LimpezaSistema:
     def __init__(self, root):
         self.root = root
         self.root.title("Limpeza do Sistema")
-        
+                
         self.frame = tk.Frame(self.root)
         self.frame.pack(padx=20, pady=20)
         
