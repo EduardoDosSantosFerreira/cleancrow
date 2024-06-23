@@ -43,30 +43,46 @@ class LimpezaSistema:
             # Verifica permissões administrativas
             self.verificar_administrador()
             
-            # Funções de limpeza
+            # Funções de limpeza e otimização
             self.limpar_temporarios()
-            self.atualizar_progresso(10)
+            self.atualizar_progresso(5)
             self.limpar_logs()
-            self.atualizar_progresso(20)
+            self.atualizar_progresso(10)
             self.limpar_update()
-            self.atualizar_progresso(30)
+            self.atualizar_progresso(15)
             self.limpar_dns()
-            self.atualizar_progresso(40)
+            self.atualizar_progresso(20)
             self.limpar_edge()
-            self.atualizar_progresso(50)
+            self.atualizar_progresso(25)
             self.limpar_chrome()
-            self.atualizar_progresso(60)
+            self.atualizar_progresso(30)
             self.limpar_firefox()
-            self.atualizar_progresso(70)
+            self.atualizar_progresso(35)
+            self.limpar_opera()
+            self.atualizar_progresso(40)
+            self.limpar_brave()
+            self.atualizar_progresso(45)
+            self.remover_programas()
+            self.atualizar_progresso(50)
+            self.limpar_espaco_disco()
+            self.atualizar_progresso(55)
             self.verificar_disco()
-            self.atualizar_progresso(80)
+            self.atualizar_progresso(60)
             self.desfragmentar_disco()
-            self.atualizar_progresso(90)
+            self.atualizar_progresso(65)
             self.limpar_desnecessarios()
-            self.atualizar_progresso(95)
+            self.atualizar_progresso(70)
             self.limpar_atualizacao()
-            self.atualizar_progresso(98)
+            self.atualizar_progresso(75)
             self.compactar_sistema()
+            self.atualizar_progresso(80)
+            self.desativar_hibernacao()
+            self.atualizar_progresso(85)
+            self.limpar_temp_adicional()
+            self.atualizar_progresso(90)
+            self.desabilitar_inicializacao()
+            self.atualizar_progresso(95)
+            self.otimizar_desligamento()
             self.atualizar_progresso(100)
             
             # Mostra mensagem de conclusão
@@ -87,72 +103,79 @@ class LimpezaSistema:
         subprocess.run(['cmd', '/c', 'del', '/q/f/s', '%TEMP%\\*'], shell=True)
         subprocess.run(['cmd', '/c', 'del', '/q/f/s', 'C:\\Windows\\Temp\\*'], shell=True)
         subprocess.run(['cmd', '/c', 'del', '/q/f/s', 'C:\\Windows\\Prefetch\\*'], shell=True)
-        self.atualizar_progresso(5)
     
     def limpar_logs(self):
         subprocess.run(['wevtutil.exe', 'el'], stdout=subprocess.PIPE)
         subprocess.run(['wevtutil.exe', 'cl', 'Application'], stdout=subprocess.PIPE)
         subprocess.run(['wevtutil.exe', 'cl', 'Security'], stdout=subprocess.PIPE)
         subprocess.run(['wevtutil.exe', 'cl', 'System'], stdout=subprocess.PIPE)
-        self.atualizar_progresso(10)
     
     def limpar_update(self):
-        # Comando para limpar o cache do Windows Update sem prompt de confirmação
         subprocess.run(['net', 'stop', 'wuauserv'], shell=True)
         subprocess.run(['net', 'stop', 'bits'], shell=True)
         subprocess.run(['rd', '/s', '/q', '%windir%\\SoftwareDistribution'], shell=True)
         subprocess.run(['net', 'start', 'wuauserv'], shell=True)
         subprocess.run(['net', 'start', 'bits'], shell=True)
-        self.atualizar_progresso(15)
     
     def limpar_dns(self):
-        # Limpar cache de DNS sem prompt de confirmação
         subprocess.run(['ipconfig', '/flushdns'], shell=True)
-        self.atualizar_progresso(20)
     
     def limpar_edge(self):
-        # Limpar cache e cookies do Microsoft Edge sem prompt de confirmação
         subprocess.run(['RunDll32.exe', 'InetCpl.cpl,ClearMyTracksByProcess', '255'], shell=True)
-        self.atualizar_progresso(25)
     
     def limpar_chrome(self):
-        # Limpar cache e cookies do Google Chrome sem prompt de confirmação
         subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%LOCALAPPDATA%\\Google\\Chrome\\User Data\\Default\\Cache"'], shell=True)
         subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%LOCALAPPDATA%\\Google\\Chrome\\User Data\\Default\\Cookies"'], shell=True)
-        self.atualizar_progresso(30)
     
     def limpar_firefox(self):
-        # Limpar cache e cookies do Mozilla Firefox sem prompt de confirmação
         subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%APPDATA%\\Mozilla\\Firefox\\Profiles\\*.default-release\\cache2"'], shell=True)
         subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%APPDATA%\\Mozilla\\Firefox\\Profiles\\*.default-release\\cookies.sqlite"'], shell=True)
-        self.atualizar_progresso(40)
+    
+    def limpar_opera(self):
+        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%APPDATA%\\Opera Software\\Opera Stable\\Cache"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%APPDATA%\\Opera Software\\Opera Stable\\Cookies"'], shell=True)
+    
+    def limpar_brave(self):
+        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%LOCALAPPDATA%\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Cache"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%LOCALAPPDATA%\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Cookies"'], shell=True)
+    
+    def remover_programas(self):
+        if subprocess.run('where FlashUtil*.exe', shell=True).returncode == 0:
+            subprocess.run('FlashUtil*.exe -uninstall', shell=True)
+    
+    def limpar_espaco_disco(self):
+        subprocess.run(['cleanmgr', '/sagerun:1'], shell=True)
     
     def verificar_disco(self):
-        # Verificar disco sem prompt de confirmação
-        # Utiliza input para responder automaticamente ao CHKDSK se necessário
         p = subprocess.Popen(['chkdsk', 'C:', '/f', '/r', '/x'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output, err = p.communicate(input=b'y\n')  # Responde 'y' para agendar no próximo reinício
-        self.atualizar_progresso(50)
     
     def desfragmentar_disco(self):
-        # Desfragmentar disco sem prompt de confirmação
         subprocess.run(['defrag', 'C:', '/O'], shell=True)
-        self.atualizar_progresso(60)
     
     def limpar_desnecessarios(self):
-        # Limpar componentes desnecessários do Windows sem prompt de confirmação
         subprocess.run(['dism', '/online', '/cleanup-image', '/startcomponentcleanup'], shell=True)
-        self.atualizar_progresso(70)
     
     def limpar_atualizacao(self):
-        # Limpar arquivos de atualização do Windows sem prompt de confirmação
         subprocess.run(['dism', '/online', '/cleanup-image', '/spsuperseded', '/hidesp'], shell=True)
-        self.atualizar_progresso(80)
     
     def compactar_sistema(self):
-        # Compactar arquivos do sistema sem prompt de confirmação
         subprocess.run(['compact', '/compactos:always', '/exe'], shell=True)
-        self.atualizar_progresso(90)
+    
+    def desativar_hibernacao(self):
+        subprocess.run(['powercfg', '-h', 'off'], shell=True)
+    
+    def limpar_temp_adicional(self):
+        subprocess.run(['cmd', '/c', 'del', '/q/f/s', '%USERPROFILE%\\AppData\\Local\\Temp\\*'], shell=True)
+        subprocess.run(['cmd', '/c', 'del', '/q/f/s', '%USERPROFILE%\\AppData\\LocalLow\\Temp\\*'], shell=True)
+    
+    def desabilitar_inicializacao(self):
+        subprocess.run(['reg', 'add', '"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"', '/v', '"UnwantedProgram"', '/f'], shell=True)
+    
+    def otimizar_desligamento(self):
+        subprocess.run(['reg', 'add', '"HKCU\\Control Panel\\Desktop"', '/v', '"WaitToKillAppTimeout"', '/t', 'REG_SZ', '/d', '"2000"', '/f'], shell=True)
+        subprocess.run(['reg', 'add', '"HKCU\\Control Panel\\Desktop"', '/v', '"HungAppTimeout"', '/t', 'REG_SZ', '/d', '"1000"', '/f'], shell=True)
+        subprocess.run(['reg', 'add', '"HKLM\\SYSTEM\\CurrentControlSet\\Control"', '/v', '"WaitToKillServiceTimeout"', '/t', 'REG_SZ', '/d', '"2000"', '/f'], shell=True)
     
     def atualizar_progresso(self, valor):
         self.progress_bar["value"] = valor

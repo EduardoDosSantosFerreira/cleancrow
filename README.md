@@ -1,45 +1,67 @@
-Claro! Abaixo está um exemplo de README.md que explica como o usuário pode executar o CleanCrow para realizar a limpeza do sistema. Certifique-se de adaptar conforme necessário, especialmente se houver detalhes específicos sobre o ambiente de execução ou requisitos adicionais.
+# Limpeza e Otimização de Sistema
 
----
+Este código implementa uma interface gráfica para realizar diversas tarefas de limpeza e otimização no sistema Windows. A seguir, estão descritas todas as funcionalidades que o código é capaz de realizar:
 
-# CleanCrow - Ferramenta de Limpeza do Sistema
+## Funcionalidades de Limpeza
 
-CleanCrow é uma ferramenta simples para realizar diversas operações de limpeza no sistema operacional Windows. Ele utiliza uma interface gráfica para guiar o usuário através das etapas de limpeza.
+1. **Limpeza de Arquivos Temporários:**
+   - Remove arquivos temporários do diretório `%TEMP%`, `C:\Windows\Temp` e `C:\Windows\Prefetch`.
 
-## Instruções de Uso
+2. **Limpeza de Logs de Eventos:**
+   - Limpa logs de eventos do Windows, incluindo Application, Security e System.
 
-Para executar o CleanCrow e realizar a limpeza do sistema, siga os passos abaixo:
+3. **Limpeza de Cache do Windows Update:**
+   - Para os serviços `wuauserv` e `bits`.
+   - Remove o conteúdo do diretório `%windir%\SoftwareDistribution`.
+   - Reinicia os serviços `wuauserv` e `bits`.
 
-### Passo 1: Download do Executável
+4. **Limpeza de Cache DNS:**
+   - Executa o comando `ipconfig /flushdns` para limpar o cache DNS.
 
-- Faça o download do arquivo executável `CleanCrow.exe` disponível no repositório.
+5. **Limpeza de Cache e Cookies de Navegadores:**
+   - **Microsoft Edge:** Utiliza `RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 255` para limpar o cache e cookies.
+   - **Google Chrome:** Remove o conteúdo dos diretórios de cache e cookies.
+   - **Mozilla Firefox:** Remove o conteúdo dos diretórios de cache e cookies.
+   - **Opera:** Remove o conteúdo dos diretórios de cache e cookies.
+   - **Brave:** Remove o conteúdo dos diretórios de cache e cookies.
 
-### Passo 2: Executar o CleanCrow
+6. **Limpeza de Arquivos Temporários Adicionais:**
+   - Remove arquivos temporários dos diretórios `%USERPROFILE%\AppData\Local\Temp` e `%USERPROFILE%\AppData\LocalLow\Temp`.
 
-- Dê um duplo clique no arquivo `CleanCrow.exe` para iniciar a aplicação.
+7. **Remoção de Programas Não Utilizados:**
+   - Exemplo: Verifica e remove o Adobe Flash Player se encontrado.
 
-### Passo 3: Interface do CleanCrow
+8. **Limpeza de Espaço em Disco:**
+   - Executa `cleanmgr /sagerun:1` para realizar uma limpeza abrangente do disco.
 
-- A interface do CleanCrow será exibida, apresentando uma mensagem inicial e um botão "Limpar".
+## Funcionalidades de Otimização
 
-### Passo 4: Iniciar a Limpeza
+1. **Verificação e Reparo de Disco:**
+   - Executa `chkdsk C: /f /r /x` para verificar e reparar o disco.
 
-- Clique no botão "Limpar" para iniciar o processo de limpeza do sistema.
-- A aplicação exibirá mensagens indicando cada etapa da limpeza que está sendo executada.
+2. **Desfragmentação do Disco:**
+   - Executa `defrag C: /O` para desfragmentar o disco.
 
-### Passo 5: Conclusão da Limpeza
+3. **Limpeza de Componentes Desnecessários do Windows:**
+   - Executa `dism /online /cleanup-image /startcomponentcleanup`.
 
-- Após a conclusão da limpeza, uma mensagem informará que o processo foi concluído com sucesso.
+4. **Limpeza de Arquivos de Atualização do Windows:**
+   - Executa `dism /online /cleanup-image /spsuperseded /hidesp`.
 
-### Observações
+5. **Compactação de Arquivos do Sistema:**
+   - Executa `compact /compactos:always /exe` para compactar arquivos do sistema.
 
-- **Permissões de Administrador:** É recomendado executar o CleanCrow com privilégios de administrador para garantir que todas as operações de limpeza sejam realizadas corretamente.
-  
-- **Tempo de Execução:** O tempo necessário para completar a limpeza pode variar dependendo do tamanho e estado do sistema.
+6. **Desativação da Hibernação:**
+   - Executa `powercfg -h off` para desativar a hibernação, economizando espaço em disco.
 
-- **Backup:** Recomenda-se fazer um backup dos seus dados importantes antes de realizar qualquer operação de limpeza no sistema.
+7. **Desabilitação de Programas de Inicialização:**
+   - Remove entradas de programas indesejados na inicialização do Windows.
 
----
+8. **Otimização do Tempo de Desligamento:**
+   - Configura o Registro do Windows para reduzir o tempo de espera para finalizar aplicativos e serviços durante o desligamento.
 
-Este documento fornece um guia básico para ajudar você a utilizar o CleanCrow para limpar o seu sistema Windows de forma segura e eficaz. Se você tiver qualquer problema ou dúvida, por favor, consulte a seção de problemas conhecidos ou entre em contato conosco para obter suporte adicional.
+## Uso
 
+Para utilizar este script, é necessário executá-lo como administrador. A interface gráfica permite iniciar o processo de limpeza clicando em um botão, enquanto uma barra de progresso e mensagens de status informam o andamento da limpeza e otimização do sistema.
+
+Este script oferece uma solução abrangente para manter o sistema Windows limpo e otimizado, melhorando o desempenho e liberando espaço em disco.

@@ -1,1 +1,1 @@
-pyinstaller --onefile limpeza_sistema.py
+pyinstaller --onefile --icon=crowico.ico limpeza_sistema.py
