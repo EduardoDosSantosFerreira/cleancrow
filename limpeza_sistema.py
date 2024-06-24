@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 import subprocess
 from threading import Thread
-import sys
 
 class LimpezaSistema:
     def __init__(self, root):
@@ -13,17 +12,20 @@ class LimpezaSistema:
         self.frame.pack(padx=20, pady=20)
         
         self.label = tk.Label(self.frame, text="Clique em Limpar para iniciar a limpeza do sistema:")
-        self.label.pack(pady=10)
+        self.label.grid(row=0, column=0, columnspan=2, pady=10)
         
         self.limpar_button = tk.Button(self.frame, text="Limpar", command=self.iniciar_limpeza)
-        self.limpar_button.pack(pady=10)
+        self.limpar_button.grid(row=1, column=0, padx=5)
+        
+        self.atualizar_button = tk.Button(self.frame, text="Atualizar", command=self.iniciar_atualizacao)
+        self.atualizar_button.grid(row=1, column=1, padx=5)
         
         self.progress_label = tk.Label(self.frame, text="")
-        self.progress_label.pack(pady=10)
+        self.progress_label.grid(row=2, column=0, columnspan=2, pady=10)
         
         # Adicionando a barra de progresso
         self.progress_bar = ttk.Progressbar(self.frame, orient="horizontal", length=300, mode="determinate")
-        self.progress_bar.pack(pady=10)
+        self.progress_bar.grid(row=3, column=0, columnspan=2, pady=10)
         
     def iniciar_limpeza(self):
         # Desabilita o botão enquanto a limpeza está em andamento
@@ -33,10 +35,23 @@ class LimpezaSistema:
         self.progress_bar["value"] = 0
         self.progress_bar["maximum"] = 100
         
+        # Configura a barra de progresso
+        self.progress_bar["value"] = 0
+        self.progress_bar["maximum"] = 100
+        
         # Executa a limpeza em uma thread para não travar a interface gráfica
         self.progress_label.config(text="Iniciando limpeza...")
         self.thread_limpeza = Thread(target=self.executar_limpeza)
         self.thread_limpeza.start()
+        
+    def iniciar_atualizacao(self):
+        # Desabilita o botão enquanto a atualização está em andamento
+        self.atualizar_button.config(state=tk.DISABLED)
+        
+        # Executa a atualização em uma thread para não travar a interface gráfica
+        self.progress_label.config(text="Iniciando atualização...")
+        self.thread_atualizacao = Thread(target=self.executar_atualizacao)
+        self.thread_atualizacao.start()
         
     def executar_limpeza(self):
         try:
@@ -94,15 +109,32 @@ class LimpezaSistema:
             # Habilita o botão novamente
             self.limpar_button.config(state=tk.NORMAL)
     
+    def executar_atualizacao(self):
+        try:
+            # Verifica permissões administrativas
+            self.verificar_administrador()
+            
+            # Executa o comando winget upgrade --all
+            subprocess.run(['winget', 'upgrade', '--all'], check=True)
+            
+            # Mostra mensagem de conclusão
+            self.progress_label.config(text="Atualização concluída!")
+            messagebox.showinfo("Concluído", "Atualização concluída!")
+        except subprocess.CalledProcessError as e:
+            messagebox.showerror("Erro", f"Ocorreu um erro durante a atualização: {str(e)}")
+        finally:
+            # Habilita o botão novamente
+            self.atualizar_button.config(state=tk.NORMAL)
+    
     def verificar_administrador(self):
         # Verifica se está executando como administrador (apenas no Windows)
         if subprocess.run("net session >nul 2>&1", shell=True).returncode != 0:
             raise Exception("Por favor, execute este programa como administrador.")
     
     def limpar_temporarios(self):
-        subprocess.run(['cmd', '/c', 'del', '/q/f/s', '%TEMP%\\*'], shell=True)
-        subprocess.run(['cmd', '/c', 'del', '/q/f/s', 'C:\\Windows\\Temp\\*'], shell=True)
-        subprocess.run(['cmd', '/c', 'del', '/q/f/s', 'C:\\Windows\\Prefetch\\*'], shell=True)
+        subprocess.run(['cmd', '/c', 'del /q/f/s %TEMP%\\*'], shell=True)
+        subprocess.run(['cmd', '/c', 'del /q/f/s C:\\Windows\\Temp\\*'], shell=True)
+        subprocess.run(['cmd', '/c', 'del /q/f/s C:\\Windows\\Prefetch\\*'], shell=True)
     
     def limpar_logs(self):
         subprocess.run(['wevtutil.exe', 'el'], stdout=subprocess.PIPE)
@@ -124,20 +156,20 @@ class LimpezaSistema:
         subprocess.run(['RunDll32.exe', 'InetCpl.cpl,ClearMyTracksByProcess', '255'], shell=True)
     
     def limpar_chrome(self):
-        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%LOCALAPPDATA%\\Google\\Chrome\\User Data\\Default\\Cache"'], shell=True)
-        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%LOCALAPPDATA%\\Google\\Chrome\\User Data\\Default\\Cookies"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd /s /q "%LOCALAPPDATA%\\Google\\Chrome\\User Data\\Default\\Cache"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd /s /q "%LOCALAPPDATA%\\Google\\Chrome\\User Data\\Default\\Cookies"'], shell=True)
     
     def limpar_firefox(self):
-        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%APPDATA%\\Mozilla\\Firefox\\Profiles\\*.default-release\\cache2"'], shell=True)
-        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%APPDATA%\\Mozilla\\Firefox\\Profiles\\*.default-release\\cookies.sqlite"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd /s /q "%APPDATA%\\Mozilla\\Firefox\\Profiles\\*.default-release\\cache2"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd /s /q "%APPDATA%\\Mozilla\\Firefox\\Profiles\\*.default-release\\cookies.sqlite"'], shell=True)
     
     def limpar_opera(self):
-        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%APPDATA%\\Opera Software\\Opera Stable\\Cache"'], shell=True)
-        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%APPDATA%\\Opera Software\\Opera Stable\\Cookies"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd /s /q "%APPDATA%\\Opera Software\\Opera Stable\\Cache"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd /s /q "%APPDATA%\\Opera Software\\Opera Stable\\Cookies"'], shell=True)
     
     def limpar_brave(self):
-        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%LOCALAPPDATA%\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Cache"'], shell=True)
-        subprocess.run(['cmd', '/c', 'rd', '/s', '/q', '"%LOCALAPPDATA%\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Cookies"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd /s /q "%LOCALAPPDATA%\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Cache"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd /s /q "%LOCALAPPDATA%\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Cookies"'], shell=True)
     
     def remover_programas(self):
         if subprocess.run('where FlashUtil*.exe', shell=True).returncode == 0:
@@ -166,8 +198,8 @@ class LimpezaSistema:
         subprocess.run(['powercfg', '-h', 'off'], shell=True)
     
     def limpar_temp_adicional(self):
-        subprocess.run(['cmd', '/c', 'del', '/q/f/s', '%USERPROFILE%\\AppData\\Local\\Temp\\*'], shell=True)
-        subprocess.run(['cmd', '/c', 'del', '/q/f/s', '%USERPROFILE%\\AppData\\LocalLow\\Temp\\*'], shell=True)
+        subprocess.run(['cmd', '/c', 'del /q/f/s %USERPROFILE%\\AppData\\Local\\Temp\\*'], shell=True)
+        subprocess.run(['cmd', '/c', 'del /q/f/s %USERPROFILE%\\AppData\\LocalLow\\Temp\\*'], shell=True)
     
     def desabilitar_inicializacao(self):
         subprocess.run(['reg', 'add', '"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"', '/v', '"UnwantedProgram"', '/f'], shell=True)
