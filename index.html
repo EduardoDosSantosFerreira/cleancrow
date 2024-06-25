@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CleanCrow - Limpeza e otimização</title>
   <link rel="icon" type="image" sizes="50x50" href="./src/assets/img/profile_icons/crowico.png">
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">  <!-- Custom CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="./src/assets/css/style.css">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -14,17 +17,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <!-- add -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="./src/assets/img/profile_icons/crowico.png" id="crowico" alt="CleanCrow Logo" class="logo-img">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -41,16 +45,17 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link btn btn-outline-light" href="#">Download</a> <!-- Botão de Download -->
+            <a class="nav-link btn btn-outline-light" href="./dist/limpeza_sistema.exe">Download</a>
+            <!-- Botão de Download -->
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  
 
-<!-- Header -->
-<header class="header text-white text-center" style="background-color: #dc3545;">
+
+  <!-- Header -->
+  <header class="header text-white text-center" style="background-color: #dc3545;">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-8 mx-auto">
@@ -60,10 +65,11 @@
         <div class="col-lg-4 text-center">
           <!-- Botão de Download -->
           <div class="btn-group">
-            <a href="#" class="btn btn-lg btn-outline-light mr-2">Baixar CleanCrow</a>
+            <a href="./dist/limpeza_sistema.exe" class="btn btn-lg btn-outline-light mr-2">Baixar CleanCrow</a>
             <!-- Botão Dropdown -->
             <div class="btn-group">
-              <button type="button" class="btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn-lg btn-outline-light dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 Versões
               </button>
               <div class="dropdown-menu">
@@ -80,13 +86,15 @@
     </div>
   </header>
 
-<!-- Sobre -->
-<section id="about" class="py-5 bg-light">
+  <!-- Sobre -->
+  <section id="about" class="py-5 bg-light">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
           <h2 class="section-heading">Sobre o CleanCrow</h2>
-          <p class="text-muted lead">O CleanCrow é um software desenvolvido para oferecer uma maneira eficiente de manter seu sistema operacional Windows limpo, otimizado e atualizado. Utilizando uma interface gráfica intuitiva, o CleanCrow permite aos usuários realizar diversas operações essenciais:</p>
+          <p class="text-muted lead">O CleanCrow é um software desenvolvido para oferecer uma maneira eficiente de
+            manter seu sistema operacional Windows limpo, otimizado e atualizado. Utilizando uma interface gráfica
+            intuitiva, o CleanCrow permite aos usuários realizar diversas operações essenciais:</p>
         </div>
       </div>
       <div class="row mt-4">
@@ -101,22 +109,24 @@
           <div class="feature-item">
             <i class="fas fa-cogs feature-icon"></i>
             <h3 class="feature-title">Otimização do Sistema</h3>
-            <p class="text-muted">Executa procedimentos como desfragmentação de disco e limpeza de componentes desnecessários.</p>
+            <p class="text-muted">Executa procedimentos como desfragmentação de disco e limpeza de componentes
+              desnecessários.</p>
           </div>
         </div>
         <div class="col-md-4 text-center">
           <div class="feature-item">
             <i class="fas fa-cloud-upload-alt feature-icon"></i>
             <h3 class="feature-title">Atualização Automática</h3>
-            <p class="text-muted">Mantém seu sistema atualizado com a última versão de programas via Windows Package Manager (winget).</p>
+            <p class="text-muted">Mantém seu sistema atualizado com a última versão de programas via Windows Package
+              Manager (winget).</p>
           </div>
         </div>
       </div>
     </div>
   </section>
-  
+
   <!-- Segurança -->
-<section id="security" class="py-5">
+  <section id="security" class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
@@ -129,7 +139,9 @@
                 </div>
                 <div class="col">
                   <p class="text-muted">
-                    O CleanCrow utiliza recursos nativos do Windows para operações de limpeza, otimização e atualização, garantindo segurança através de ferramentas integradas como o utilitário de limpeza de disco e verificação de disco.
+                    O CleanCrow utiliza recursos nativos do Windows para operações de limpeza, otimização e atualização,
+                    garantindo segurança através de ferramentas integradas como o utilitário de limpeza de disco e
+                    verificação de disco.
                   </p>
                 </div>
               </div>
@@ -139,7 +151,8 @@
                 </div>
                 <div class="col">
                   <p class="text-muted">
-                    Desenvolvido em Python com Tkinter, o CleanCrow não requer permissões elevadas nem instalação de componentes externos, reduzindo vulnerabilidades de segurança.
+                    Desenvolvido em Python com Tkinter, o CleanCrow não requer permissões elevadas nem instalação de
+                    componentes externos, reduzindo vulnerabilidades de segurança.
                   </p>
                 </div>
               </div>
@@ -149,7 +162,8 @@
                 </div>
                 <div class="col">
                   <p class="text-muted">
-                    Compromisso com a segurança e integridade dos dados dos usuários, assegurando operações transparentes e confiáveis para manter o desempenho do seu sistema operacional Windows.
+                    Compromisso com a segurança e integridade dos dados dos usuários, assegurando operações
+                    transparentes e confiáveis para manter o desempenho do seu sistema operacional Windows.
                   </p>
                 </div>
               </div>
@@ -159,31 +173,31 @@
       </div>
     </div>
   </section>
-  
 
-<!-- Funcionalidades -->
-<section id="features" class="bg-light py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h2 class="section-heading text-center">Funcionalidades do CleanCrow</h2>
-        <p class="text-center mb-5">Conheça as principais funcionalidades oferecidas pelo CleanCrow:</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-check-circle text-danger"></i> Limpeza do Sistema</li>
-          <li><i class="fas fa-check-circle text-danger"></i> Limpeza de Navegadores</li>
-          <li><i class="fas fa-check-circle text-danger"></i> Remoção de Programas</li>
-          <li><i class="fas fa-check-circle text-danger"></i> Otimização do Sistema</li>
-          <li><i class="fas fa-check-circle text-danger"></i> Outras Operações de Otimização</li>
-          <li><i class="fas fa-check-circle text-danger"></i> Otimização de Desligamento</li>
-          <li><i class="fas fa-check-circle text-danger"></i> Atualização de Pacotes</li>
-        </ul>
+
+  <!-- Funcionalidades -->
+  <section id="features" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="section-heading text-center">Funcionalidades do CleanCrow</h2>
+          <p class="text-center mb-5">Conheça as principais funcionalidades oferecidas pelo CleanCrow:</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-check-circle text-danger"></i> Limpeza do Sistema</li>
+            <li><i class="fas fa-check-circle text-danger"></i> Limpeza de Navegadores</li>
+            <li><i class="fas fa-check-circle text-danger"></i> Remoção de Programas</li>
+            <li><i class="fas fa-check-circle text-danger"></i> Otimização do Sistema</li>
+            <li><i class="fas fa-check-circle text-danger"></i> Outras Operações de Otimização</li>
+            <li><i class="fas fa-check-circle text-danger"></i> Otimização de Desligamento</li>
+            <li><i class="fas fa-check-circle text-danger"></i> Atualização de Pacotes</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Avaliações -->
-<section id="reviews" class="py-5 bg-light">
+  <!-- Avaliações -->
+  <section id="reviews" class="py-5 bg-light">
     <div class="container">
       <h2 class="section-heading text-center mb-4">Avaliações do CleanCrow</h2>
       <div class="row">
@@ -197,7 +211,8 @@
               <span class="fa fa-star checked"></span>
               <span class="fa fa-star checked"></span>
             </div>
-            <p class="review-text">"O CleanCrow realmente fez a diferença no desempenho do meu PC. Com suas ferramentas de limpeza e otimização, meu sistema está mais rápido e eficiente. Recomendo muito!"</p>
+            <p class="review-text">"O CleanCrow realmente fez a diferença no desempenho do meu PC. Com suas ferramentas
+              de limpeza e otimização, meu sistema está mais rápido e eficiente. Recomendo muito!"</p>
             <p class="review-date">Postado em 24 de junho de 2024</p>
           </div>
         </div>
@@ -211,7 +226,8 @@
               <span class="fa fa-star checked"></span>
               <span class="fa fa-star"></span>
             </div>
-            <p class="review-text">"Excelente programa! Facilitou muito a minha vida na manutenção do sistema. A interface é simples e as funcionalidades são poderosas. Ótimo trabalho!"</p>
+            <p class="review-text">"Excelente programa! Facilitou muito a minha vida na manutenção do sistema. A
+              interface é simples e as funcionalidades são poderosas. Ótimo trabalho!"</p>
             <p class="review-date">Postado em 23 de junho de 2024</p>
           </div>
         </div>
@@ -225,18 +241,17 @@
               <span class="fa fa-star"></span>
               <span class="fa fa-star"></span>
             </div>
-            <p class="review-text">"O CleanCrow superou minhas expectativas! Com apenas alguns cliques, consegui liberar espaço no disco e manter meu sistema atualizado. Muito prático e eficiente!"</p>
+            <p class="review-text">"O CleanCrow superou minhas expectativas! Com apenas alguns cliques, consegui liberar
+              espaço no disco e manter meu sistema atualizado. Muito prático e eficiente!"</p>
             <p class="review-date">Postado em 22 de junho de 2024</p>
           </div>
         </div>
       </div>
     </div>
   </section>
-  
-  
 
-<!-- Como Usar -->
-<section id="how-to-use" class="py-5 bg-light">
+  <!-- Como Usar -->
+  <section id="how-to-use" class="py-5 bg-light">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
@@ -248,7 +263,8 @@
                   <i class="fas fa-desktop fa-3x"></i>
                 </div>
                 <h3 class="feature-title">Interface Gráfica</h3>
-                <p class="text-muted">Clique no botão "Limpar" para iniciar as operações de limpeza e otimização do sistema. Uma barra de progresso acompanha cada etapa.</p>
+                <p class="text-muted">Clique no botão "Limpar" para iniciar as operações de limpeza e otimização do
+                  sistema. Uma barra de progresso acompanha cada etapa.</p>
               </div>
             </div>
             <div class="col-md-6">
@@ -257,7 +273,8 @@
                   <i class="fas fa-sync fa-3x"></i>
                 </div>
                 <h3 class="feature-title">Atualização de Pacotes</h3>
-                <p class="text-muted">Utilize o botão "Atualizar" para executar a atualização de pacotes via winget upgrade --all. A barra de progresso indica o status da atualização.</p>
+                <p class="text-muted">Utilize o botão "Atualizar" para executar a atualização de pacotes via winget
+                  upgrade --all. A barra de progresso indica o status da atualização.</p>
               </div>
             </div>
           </div>
@@ -268,7 +285,8 @@
                   <i class="fas fa-shield-alt fa-3x"></i>
                 </div>
                 <h3 class="feature-title">Importante</h3>
-                <p class="text-muted">Para garantir o sucesso das operações, execute o CleanCrow com permissões de administrador.</p>
+                <p class="text-muted">Para garantir o sucesso das operações, execute o CleanCrow com permissões de
+                  administrador.</p>
               </div>
             </div>
             <div class="col-lg-6 mx-auto">
@@ -277,7 +295,8 @@
                   <i class="fas fa-exclamation-circle fa-3x"></i>
                 </div>
                 <h3 class="feature-title">Feedback de Erros</h3>
-                <p class="text-muted">Se ocorrer algum erro durante as operações, uma mensagem será exibida para orientar o usuário sobre o problema.</p>
+                <p class="text-muted">Se ocorrer algum erro durante as operações, uma mensagem será exibida para
+                  orientar o usuário sobre o problema.</p>
               </div>
             </div>
           </div>
@@ -285,51 +304,59 @@
       </div>
     </div>
   </section>
-  
+
   <section id="final" class="py-5">
     <div class="container text-center">
       <h2 class="section-heading">Mantenha seu Ambiente Digital Limpo e Performático</h2>
       <p class="lead">
-        A manutenção regular do sistema operacional é crucial para garantir um desempenho ótimo e seguro do seu computador. O CleanCrow simplifica esse processo, oferecendo uma maneira eficiente de limpar, otimizar e atualizar seu sistema Windows.
+        A manutenção regular do sistema operacional é crucial para garantir um desempenho ótimo e seguro do seu
+        computador. O CleanCrow simplifica esse processo, oferecendo uma maneira eficiente de limpar, otimizar e
+        atualizar seu sistema Windows.
       </p>
       <p class="lead">
-        Não subestime a importância de um ambiente digital limpo. Proteja seus dados, melhore a segurança e mantenha seu computador funcionando sem problemas com o CleanCrow.
+        Não subestime a importância de um ambiente digital limpo. Proteja seus dados, melhore a segurança e mantenha seu
+        computador funcionando sem problemas com o CleanCrow.
       </p>
       <div class="button-wrapper">
-        <a href="#" class="btn btn-primary btn-lg" id="clean-crow-btn">Experimente Agora</a>
+        <a href="./dist/limpeza_sistema.exe" class="btn btn-primary btn-lg" id="clean-crow-btn">Experimente Agora</a>
       </div>
     </div>
   </section>
-  
 
-
-<!-- Rodapé -->
-<footer class="py-5">
+  <!-- Rodapé -->
+  <footer class="py-5">
     <div class="container text-center">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-12">
-                <img src="./src/assets/img/profile_icons/crow04.png" id="footer-icon" alt="corvo" style="width: 50px;"
-                    class="footer-logo">
-                <hr class="bg-white">
-            </div>
-            <div class="col-md-12">
-                <a href="http://"><img src="./src/assets/img/icons/wts.png" alt="Whatsapp" title="Whatsapp" id="ico-ftr"></a>
-                <a href="http://"><img src="./src/assets/img/icons/in.png" alt="Linkedin" title="Linkedin" id="ico-ftr"></a>
-                <a href="http://"><img src="./src/assets/img/icons/dc.png" alt="Discord" title="Discord" id="ico-ftr"></a>
-                <a href="http://"><img src="./src/assets/img/icons/reddit.png" alt="Reddit" title="Reddit" id="ico-ftr"></a>
-                <a href="http://"><img src="./src/assets/img/icons/gmail.png" alt="Gmail" title="Gmail" id="ico-ftr"></a>
-                <a href="http://"><img src="./src/assets/img/icons/github.png" alt="Github" title="Github" id="ico-ftr"></a>
-            </div>
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-12">
+          <img src="./src/assets/img/profile_icons/crow04.png" id="footer-icon" alt="corvo" style="width: 50px;"
+            class="footer-logo">
+          <hr class="bg-white">
         </div>
-        <br>
-        <p>&copy; 2024 Eduardo S Ferreira.</p>
+        <div class="col-md-12">
+          <a href="http://"><img src="./src/assets/img/icons/wts.png" alt="Whatsapp" title="Whatsapp" id="ico-ftr"></a>
+          <a href="http://"><img src="./src/assets/img/icons/in.png" alt="Linkedin" title="Linkedin" id="ico-ftr"></a>
+          <a href="http://"><img src="./src/assets/img/icons/dc.png" alt="Discord" title="Discord" id="ico-ftr"></a>
+          <a href="http://"><img src="./src/assets/img/icons/reddit.png" alt="Reddit" title="Reddit" id="ico-ftr"></a>
+          <a href="http://"><img src="./src/assets/img/icons/gmail.png" alt="Gmail" title="Gmail" id="ico-ftr"></a>
+          <a href="http://"><img src="./src/assets/img/icons/github.png" alt="Github" title="Github" id="ico-ftr"></a>
+        </div>
+      </div>
+      <br>
+      <p>&copy; 2024 Eduardo S Ferreira.</p>
     </div>
-</footer>
+  </footer>
 
-<!-- Bootstrap JS, Popper.js, jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-<script src="./src/assets/js/script.js"></script>
+  <!-- Bootstrap JS, Popper.js, jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+    integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+    crossorigin="anonymous"></script>
+  <script src="./src/assets/js/script.js"></script>
 </body>
+
 </html>
