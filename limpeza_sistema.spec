@@ -36,4 +36,5 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=['crowico.ico'],
+    manifest='limpeza_sistema.exe.manifest',
 )

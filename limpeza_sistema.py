@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 import subprocess
 from threading import Thread
+import sys
+import os
+import ctypes
 
 class LimpezaSistema:
     def __init__(self, root):
@@ -33,6 +36,19 @@ class LimpezaSistema:
         self.progress_bar = ttk.Progressbar(self.frame, orient="horizontal", length=300, mode="determinate")
         self.progress_bar.grid(row=3, column=0, columnspan=2, pady=10)
 
+        # Verificar e solicitar privilégios de administrador
+        self.verificar_e_solicitar_administrador()
+
+    def verificar_e_solicitar_administrador(self):
+        if not ctypes.windll.shell32.IsUserAnAdmin():
+            # Não é administrador, solicitar elevação
+            MessageBox = ctypes.windll.user32.MessageBoxW
+            MessageBox(None, 'Este programa requer privilégios de administrador. Por favor, execute como administrador.', 'Erro de Privacidade', 0x10)
+            ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+
+            # Fechar o programa se não for executado como administrador
+            sys.exit(0)
+
     def iniciar_limpeza(self):
         self.limpar_button.config(state=tk.DISABLED)
         self.progress_bar["value"] = 0
@@ -49,7 +65,6 @@ class LimpezaSistema:
 
     def executar_limpeza(self):
         try:
-            self.verificar_administrador()
             self.limpar_temporarios()
             self.atualizar_progresso(5)
             self.limpar_logs()
@@ -100,7 +115,6 @@ class LimpezaSistema:
 
     def executar_atualizacao(self):
         try:
-            self.verificar_administrador()
             subprocess.run(['winget', 'upgrade', '--all'], check=True)
             self.progress_label.config(text="Atualização concluída!")
             messagebox.showinfo("Concluído", "Atualização concluída!")
@@ -108,10 +122,6 @@ class LimpezaSistema:
             messagebox.showerror("Erro", f"Ocorreu um erro durante a atualização: {str(e)}")
         finally:
             self.atualizar_button.config(state=tk.NORMAL)
-
-    def verificar_administrador(self):
-        if subprocess.run("net session >nul 2>&1", shell=True).returncode != 0:
-            raise Exception("Por favor, execute este programa como administrador.")
 
     def limpar_temporarios(self):
         subprocess.run(['cmd', '/c', 'del /q/f/s %TEMP%\\*'], shell=True)
