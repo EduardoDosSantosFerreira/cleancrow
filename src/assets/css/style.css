@@ -1,6 +1,11 @@
 /* Estilos personalizados */
 html {
   scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif; /* Adicionando a fonte Poppins */
+}
+
+body {
+  font-family: 'Poppins', sans-serif; /* Garantindo que toda a página utilize a fonte Poppins */
 }
 
 /* Estilo para o header */
@@ -23,19 +28,28 @@ html {
 /* Estilo para a navbar */
 .navbar {
   background-color: #000; /* Preto */
+  font-family: 'Poppins', sans-serif; /* Adicionando a fonte Poppins */
+  padding: 15px 0; /* Adicionando padding para melhorar o estilo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adicionando sombra */
 }
 
 .navbar .navbar-brand {
   color: #fff; /* Branco */
   font-size: 1.5rem;
+  font-weight: bold; /* Adicionando negrito */
 }
 
 .navbar .navbar-nav .nav-link {
   color: #fff; /* Branco */
+  font-size: 1.3rem; /* Aumentando o tamanho da fonte */
+  padding: 10px 15px; /* Adicionando padding */
+  transition: color 0.3s ease; /* Adicionando transição */
 }
 
 .navbar .navbar-nav .nav-link:hover {
   color: #dc3545; /* Vermelho */
+  background-color: rgba(255, 255, 255, 0.1); /* Adicionando fundo ao hover */
+  border-radius: 5px; /* Adicionando borda arredondada */
 }
 
 /* Estilo para seções */
