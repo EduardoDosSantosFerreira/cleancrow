@@ -176,7 +176,7 @@ footer {
 
 /* Estilo para a seção de Segurança */
 #security {
-  background-color: #f8f9fa; /* Cinza claro */
+  background-color: #000000; /* Cinza claro */
   padding: 80px 0;
 }
 
@@ -247,4 +247,16 @@ footer {
 
 .button-wrapper .btn:hover::before {
   top: 0;
+}
+
+@keyframes redGradient {
+  0% { color: #ff0000; } /* Vermelho brilhante */
+  25% { color: #ff4d4d; } /* Vermelho claro */
+  50% { color: #b30000; } /* Vermelho escuro */
+  75% { color: #ff1a1a; } /* Vermelho vibrante */
+  100% { color: #ff0000; } /* Volta ao vermelho brilhante */
+}
+
+.animated-text {
+  animation: redGradient 2s infinite;
 }
