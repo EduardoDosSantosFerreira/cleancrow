@@ -7,4 +7,10 @@
             </requestedPrivileges>
         </security>
     </trustInfo>
+    <dependency>
+        <dependentAssembly>
+            <assemblyIdentity type="win32" name="Microsoft.Windows.Common-Controls" version="6.0.0.0" processorArchitecture="*"/>
+        </dependentAssembly>
+    </dependency>
+    <description>Manifesto para o aplicativo de limpeza do sistema, requerendo privilégios de administrador.</description>
 </assembly>

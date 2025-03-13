@@ -163,6 +163,14 @@ class LimpezaSistema:
         subprocess.run(['cmd', '/c', 'rd /s /q "%LOCALAPPDATA%\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Cache"'], shell=True)
         subprocess.run(['cmd', '/c', 'rd /s /q "%LOCALAPPDATA%\\BraveSoftware\\Brave-Browser\\User Data\\Default\\Cookies"'], shell=True)
 
+    def limpar_safari(self):
+        subprocess.run(['cmd', '/c', 'rd /s /q "%APPDATA%\\Apple Computer\\Safari\\Cache"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd /s /q "%APPDATA%\\Apple Computer\\Safari\\Cookies"'], shell=True)
+
+    def limpar_vivaldi(self):
+        subprocess.run(['cmd', '/c', 'rd /s /q "%LOCALAPPDATA%\\Vivaldi\\User Data\\Default\\Cache"'], shell=True)
+        subprocess.run(['cmd', '/c', 'rd /s /q "%LOCALAPPDATA%\\Vivaldi\\User Data\\Default\\Cookies"'], shell=True)
+
     def remover_programas(self):
         if subprocess.run('where FlashUtil*.exe', shell=True).returncode == 0:
             subprocess.run('FlashUtil*.exe -uninstall', shell=True)
@@ -204,7 +212,44 @@ class LimpezaSistema:
     def atualizar_progresso(self, valor):
         self.progress_bar["value"] = valor
         self.frame.update_idletasks()
+    
+    def limpar_miniaturas(self):
+        subprocess.run(['cmd', '/c', 'del /q/f/s %LOCALAPPDATA%\\Microsoft\\Windows\\Explorer\\thumbcache_*'], shell=True)
 
+    def limpar_dumps_memoria(self):
+        subprocess.run(['cmd', '/c', 'del /q/f/s C:\\Windows\\Minidump\\*'], shell=True)
+        subprocess.run(['cmd', '/c', 'del /q/f/s C:\\Windows\\MEMORY.DMP'], shell=True)
+
+    def limpar_relatorios_erros(self):
+        subprocess.run(['cmd', '/c', 'del /q/f/s C:\\ProgramData\\Microsoft\\Windows\\WER\\*'], shell=True)
+
+    def limpar_logs_windows_update(self):
+        subprocess.run(['cmd', '/c', 'del /q/f/s %windir%\\Logs\\WindowsUpdate\\*'], shell=True)
+
+    def reiniciar_servicos_essenciais(self):
+        subprocess.run(['net', 'start', 'wuauserv'], shell=True)
+        subprocess.run(['net', 'start', 'bits'], shell=True)
+        subprocess.run(['net', 'start', 'Dnscache'], shell=True)
+
+    def limpar_cache_loja_windows(self):
+        subprocess.run(['wsreset.exe'], shell=True)
+
+    def remover_bloatware(self):
+        apps = ["Microsoft.3DBuilder", "Microsoft.BingWeather", "Microsoft.MicrosoftSolitaireCollection"]
+        for app in apps:
+            subprocess.run(['powershell', '-Command', f'Get-AppxPackage {app} | Remove-AppxPackage'], shell=True)
+
+    def limpar_windows_old(self):
+        subprocess.run(['cmd', '/c', 'rd /s /q C:\\Windows.old'], shell=True)
+
+    def resetar_rede(self):
+        subprocess.run(['netsh', 'winsock', 'reset'], shell=True)
+        subprocess.run(['netsh', 'int', 'ip', 'reset'], shell=True)
+
+    def verificar_corrigir_arquivos_sistema(self):
+        subprocess.run(['sfc', '/scannow'], shell=True)
+        subprocess.run(['dism', '/online', '/cleanup-image', '/restorehealth'], shell=True)
+        
 if __name__ == "__main__":
     root = tk.Tk()
     app = LimpezaSistema(root)
