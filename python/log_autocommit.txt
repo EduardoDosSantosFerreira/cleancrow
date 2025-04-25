@@ -467,3 +467,31 @@ Criando commit...
 Commit realizado com sucesso: Atualização automática: 2025-04-24 14:30:03
 ---------------------------------------- 
 ----------- 24/04/2025 17:00:01,48 ------------- 
+From https://github.com/EduardoDosSantosFerreira/cleancrow
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+warning: in the working copy of 'python/log_autocommit.txt', LF will be replaced by CRLF the next time Git touches it
+[main aaf7c58] AtualizaÃ§Ã£o automÃ¡tica: 2025-04-24 17:00:03
+ 1 file changed, 13 insertions(+)
+git: 'credential-manager-core' is not a git command. See 'git --help'.
+To https://github.com/EduardoDosSantosFerreira/cleancrow
+   10028b2..aaf7c58  main -> main
+Criando commit...
+Commit realizado com sucesso: Atualização automática: 2025-04-24 17:00:03
+---------------------------------------- 
+----------- 24/04/2025 19:30:02,02 ------------- 
+Criando commit...
+Traceback (most recent call last):
+  File "C:\Users\Eduardo\Documents\cleancrow\python\auto_commit.py", line 37, in <module>
+    auto_commit()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Eduardo\Documents\cleancrow\python\auto_commit.py", line 16, in auto_commit
+    subprocess.run(['git', 'pull', 'origin', 'main'], check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eduardo\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', 'pull', 'origin', 'main']' returned non-zero exit status 1.
+---------------------------------------- 
+----------- 24/04/2025 22:00:02,13 ------------- 
+----------- 25/04/2025 14:30:01,60 ------------- 
