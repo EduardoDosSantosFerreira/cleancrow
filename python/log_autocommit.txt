@@ -220,3 +220,29 @@ Traceback (most recent call last):
 subprocess.CalledProcessError: Command '['git', 'push', 'origin', 'main']' returned non-zero exit status 128.
 ---------------------------------------- 
 ----------- 28/04/2025 19:30:01,35 ------------- 
+From https://github.com/EduardoDosSantosFerreira/cleancrow
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+warning: in the working copy of 'python/log_autocommit.txt', LF will be replaced by CRLF the next time Git touches it
+[main a6f7d1d] Atualização automática: 2025-04-28 19:30:03
+ 1 file changed, 26 insertions(+)
+fatal: Unable to persist credentials with the 'wincredman' credential store.
+See https://aka.ms/gcm/credstores for more information.
+git: 'credential-manager-core' is not a git command. See 'git --help'.
+bash: line 1: /dev/tty: No such device or address
+error: failed to execute prompt script (exit code 1)
+fatal: could not read Username for 'https://github.com': No such file or directory
+Criando commit...
+Traceback (most recent call last):
+  File "C:\Users\Eduardo\Documents\cleancrow\python\auto_commit.py", line 37, in <module>
+    auto_commit()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Eduardo\Documents\cleancrow\python\auto_commit.py", line 26, in auto_commit
+    subprocess.run(['git', 'push', 'origin', 'main'], check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eduardo\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', 'push', 'origin', 'main']' returned non-zero exit status 128.
+---------------------------------------- 
+----------- 28/04/2025 22:00:01,85 ------------- 
