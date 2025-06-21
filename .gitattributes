@@ -1,9 +1,5 @@
 # Forçar identificação correta das linguagens
 *.py linguist-language=Python
-*.html linguist-language=HTML
-*.css linguist-language=CSS
-*.js linguist-language=JavaScript
-*.tex linguist-language=ignore
 
 # Ignorar arquivos de build e empacotamento
 build/* linguist-vendored
@@ -14,3 +10,6 @@ dist/* linguist-vendored
 *.png linguist-generated
 *.ico linguist-generated
 *.svg linguist-generated
+
+# Garantir que arquivos .tex não sejam considerados (caso existam por engano)
+*.tex linguist-detectable=false
