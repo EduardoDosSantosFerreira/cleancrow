@@ -13,3 +13,6 @@ dist/* linguist-vendored
 
 # Garantir que arquivos .tex não sejam considerados (caso existam por engano)
 *.tex linguist-detectable=false
+
+# Meu código também não tem tanto HTML
+*.html linguist-detectable=false
