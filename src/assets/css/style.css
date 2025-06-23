@@ -1,23 +1,20 @@
-/* Estilos personalizados */
 html {
   scroll-behavior: smooth;
-  font-family: 'Poppins', sans-serif; /* Adicionando a fonte Poppins */
 }
 
 body {
-  font-family: 'Poppins', sans-serif; /* Garantindo que toda a página utilize a fonte Poppins */
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Estilo para o header */
 .header {
-  background-color: #dc3545; /* Vermelho */
-  color: #fff; /* Branco */
+  background-color: #dc3545;
+  color: #fff;
   padding: 100px 0;
   text-align: center;
 }
 
 .header h1 {
-  font-size: 3rem; /* Reduzimos o tamanho da fonte do título */
+  font-size: 3rem;
   margin-bottom: 20px;
 }
 
@@ -25,52 +22,49 @@ body {
   font-size: 1.5rem;
 }
 
-/* Estilo para a navbar */
 .navbar {
-  background-color: #000; /* Preto */
-  font-family: 'Poppins', sans-serif; /* Adicionando a fonte Poppins */
-  padding: 15px 0; /* Adicionando padding para melhorar o estilo */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adicionando sombra */
+  background-color: #000;
+  font-family: 'Poppins', sans-serif;
+  padding: 15px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .navbar-brand {
-  color: #fff; /* Branco */
+  color: #fff;
   font-size: 1.5rem;
-  font-weight: bold; /* Adicionando negrito */
+  font-weight: bold;
 }
 
 .navbar .navbar-nav .nav-link {
-  color: #fff; /* Branco */
-  font-size: 1.3rem; /* Aumentando o tamanho da fonte */
-  padding: 10px 15px; /* Adicionando padding */
-  transition: color 0.3s ease; /* Adicionando transição */
+  color: #fff;
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
 }
 
 .navbar .navbar-nav .nav-link:hover {
-  color: #dc3545; /* Vermelho */
-  background-color: rgba(255, 255, 255, 0.1); /* Adicionando fundo ao hover */
-  border-radius: 5px; /* Adicionando borda arredondada */
+  color: #dc3545;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
 }
 
-/* Estilo para seções */
 .section-heading {
-  color: #dc3545; /* Vermelho */
+  color: #dc3545;
   text-align: center;
   margin-bottom: 50px;
 }
 
-/* Estilo para ícones e imagens */
 .feature-item {
   text-align: center;
   padding: 30px;
   border-radius: 8px;
-  background-color: #ffffff; /* Branco */
+  background-color: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   margin-bottom: 30px;
-  display: flex; /* Utilizamos flexbox para alinhar os itens verticalmente */
-  flex-direction: column; /* Colocamos os itens em coluna */
-  justify-content: space-between; /* Distribuímos o espaço entre os itens */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .feature-item:hover {
@@ -78,29 +72,29 @@ body {
 }
 
 .feature-icon {
-  color: #dc3545; /* Vermelho */
-  font-size: 2rem; /* Reduzimos o tamanho dos ícones */
+  color: #dc3545;
+  font-size: 2rem;
   margin-bottom: 10px;
 }
 
 .feature-title {
-  font-size: 1.25rem; /* Reduzimos o tamanho dos títulos */
+  font-size: 1.25rem;
   font-weight: bold;
-  color: #333; /* Cinza escuro */
+  color: #333;
 }
 
 .text-muted {
-  font-size: 1rem; /* Reduzimos o tamanho do texto */
-  color: #666; /* Cinza */
+  font-size: 1rem;
+  color: #666;
 }
 
 #crowico {
-  width: 90px; /* Reduzimos o tamanho da imagem do ícone */
+  width: 90px;
 }
 
 @media (min-width: 768px) {
   .feature-item {
-    height: 100%; /* Garantimos que todas as caixas tenham a mesma altura */
+    height: 100%;
   }
 }
 
@@ -108,81 +102,38 @@ footer {
   background-color: #000;
   color: white;
 }
+
 ::-webkit-scrollbar {
   width: 12px;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #6a0000;
   border-radius: 0px;
 }
+
 ::-webkit-scrollbar-track {
   background-color: #9c00005c;
 }
+
 #ico-ftr {
   width: 50px;
   margin-right: 10px;
 }
+
 #ico-ftr:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease;
 }
 
-/* Estilos para a seção de avaliações */
-#reviews {
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
-.review-box {
-  background-color: #fff;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  height: 100%; /* Altura fixa para manter as caixas do mesmo tamanho */
-  transition: all 0.3s ease;
-}
-
-.review-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.review-title {
-  font-size: 1.5rem;
-  color: #dc3545; /* Vermelho */
-  margin-bottom: 10px;
-}
-
-.star-rating {
-  color: #ffc107; /* Amarelo */
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
-.review-text {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-}
-
-.review-date {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-/* Estilo para estrelas */
-.star-rating .fa-star {
-  margin-right: 2px;
-}
-
-/* Estilo para a seção de Segurança */
 #security {
-  background-color: #000000; /* Cinza claro */
+  background-color: #000000;
   padding: 80px 0;
 }
 
 #security .section-heading {
   margin-bottom: 50px;
-  color: #dc3545; /* Vermelho */
+  color: #dc3545;
   text-align: start;
 }
 
@@ -203,22 +154,8 @@ footer {
   text-align: start;
 }
 
-#danger{
+#danger {
   padding-top: 30px;
-}
-
-#final {
-  background-color: #f8f9fa; /* Cor de fundo */
-  padding: 80px 0;
-}
-
-#final .section-heading {
-  color: #dc3545; /* Cor do título */
-}
-
-#final .lead {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
 }
 
 .button-wrapper {
@@ -229,8 +166,8 @@ footer {
   position: relative;
   overflow: hidden;
   color: #fff;
-  background-color: #dc3545; /* Cor do botão */
-  border-color: #dc3545; /* Cor da borda */
+  background-color: #dc3545;
+  border-color: #dc3545;
 }
 
 .button-wrapper .btn::before {
@@ -250,11 +187,21 @@ footer {
 }
 
 @keyframes redGradient {
-  0% { color: #ff0000; } /* Vermelho brilhante */
-  25% { color: #ff4d4d; } /* Vermelho claro */
-  50% { color: #b30000; } /* Vermelho escuro */
-  75% { color: #ff1a1a; } /* Vermelho vibrante */
-  100% { color: #ff0000; } /* Volta ao vermelho brilhante */
+  0% {
+    color: #ff0000;
+  }
+  25% {
+    color: #ff4d4d;
+  }
+  50% {
+    color: #b30000;
+  }
+  75% {
+    color: #ff1a1a;
+  }
+  100% {
+    color: #ff0000;
+  }
 }
 
 .animated-text {
