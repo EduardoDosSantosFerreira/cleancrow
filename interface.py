@@ -14,8 +14,9 @@ from PyQt5.QtWidgets import (
     QFrame,
 )
 from PyQt5.QtCore import QThread, pyqtSignal, Qt, QSize
-from PyQt5.QtGui import QFont, QIcon, QPixmap
+from PyQt5.QtGui import QFont, QIcon
 from limpeza_sistema import SistemaLimpeza
+import os
 
 
 class WorkerThread(QThread):
@@ -40,8 +41,25 @@ class CleanCrowUI(QMainWindow):
         super().__init__()
         self.setWindowTitle("CleanCrow - Otimizador de Sistema")
         self.setFixedSize(700, 700)  # Aumentado para acomodar os ícones maiores
-        self.setWindowIcon(QIcon("crowico.ico"))
+
+        # Definir ícone da janela (opcional, pode remover se não quiser)
+        icone_janela = self.obter_caminho_icone("crowico.png")
+        if icone_janela:
+            self.setWindowIcon(QIcon(icone_janela))
+
         self.setup_ui()
+
+    def obter_caminho_icone(self, nome_arquivo):
+        # Tenta encontrar o ícone na pasta assets/img/profile_icons relativa ao script
+        caminhos_possiveis = [
+            os.path.join(os.path.dirname(__file__), "assets", "img", "profile_icons", nome_arquivo),
+            os.path.join(os.path.dirname(__file__), "src", "assets", "img", "profile_icons", nome_arquivo),
+            os.path.join(os.path.dirname(__file__), nome_arquivo),
+        ]
+        for caminho in caminhos_possiveis:
+            if os.path.exists(caminho):
+                return caminho
+        return None
 
     def setup_ui(self):
         # Configuração principal da janela
@@ -70,13 +88,12 @@ class CleanCrowUI(QMainWindow):
         header_layout = QHBoxLayout()
         header_widget.setLayout(header_layout)
 
-        # Logo
-        logo_label = QLabel()
-        logo_pixmap = QPixmap("crowico.ico").scaled(
-            48, 48, Qt.KeepAspectRatio, Qt.SmoothTransformation
-        )
-        logo_label.setPixmap(logo_pixmap)
-        header_layout.addWidget(logo_label)
+        # Adiciona o logo (ícone do corvo) à esquerda do título, se disponível
+        logo_path = self.obter_caminho_icone("crowico.png")
+        if logo_path:
+            logo_label = QLabel()
+            logo_label.setPixmap(QIcon(logo_path).pixmap(QSize(48, 48)))
+            header_layout.addWidget(logo_label)
 
         # Título
         title_label = QLabel("CLEANCROW")
@@ -131,8 +148,11 @@ class CleanCrowUI(QMainWindow):
 
         # Botão Limpar
         self.limpar_button = QPushButton(" LIMPAR SISTEMA")
-        self.limpar_button.setIcon(QIcon("103414.png"))
-        self.limpar_button.setIconSize(QSize(32, 32))  # Ícone maior
+        # Adiciona ícone funcional ao botão Limpar
+        icone_limpar = self.obter_caminho_icone("broom.png")
+        if icone_limpar:
+            self.limpar_button.setIcon(QIcon(icone_limpar))
+            self.limpar_button.setIconSize(QSize(28, 28))
         self.limpar_button.setStyleSheet(
             """
             QPushButton {
@@ -158,8 +178,11 @@ class CleanCrowUI(QMainWindow):
 
         # Botão Atualizar
         self.atualizar_button = QPushButton(" ATUALIZAR SISTEMA")
-        self.atualizar_button.setIcon(QIcon("159612.png"))
-        self.atualizar_button.setIconSize(QSize(32, 32))  # Ícone maior
+        # Adiciona ícone funcional ao botão Atualizar
+        icone_atualizar = self.obter_caminho_icone("refresh.png")
+        if icone_atualizar:
+            self.atualizar_button.setIcon(QIcon(icone_atualizar))
+            self.atualizar_button.setIconSize(QSize(28, 28))
         self.atualizar_button.setStyleSheet(
             """
             QPushButton {
