@@ -1,10 +1,22 @@
+# CleanCrow - © 2024 Eduardo Dos Santos Ferreira
+# Licenciado sob GNU GPL v3.0 - https://www.gnu.org/licenses/gpl-3.0.html
+
 from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
-    QPushButton, QLabel, QProgressBar, QMessageBox, QFrame
+    QApplication,
+    QMainWindow,
+    QWidget,
+    QVBoxLayout,
+    QHBoxLayout,
+    QPushButton,
+    QLabel,
+    QProgressBar,
+    QMessageBox,
+    QFrame,
 )
 from PyQt5.QtCore import QThread, pyqtSignal, Qt, QSize
 from PyQt5.QtGui import QFont, QIcon, QPixmap
 from limpeza_sistema import SistemaLimpeza
+
 
 class WorkerThread(QThread):
     progress_updated = pyqtSignal(int)
@@ -22,6 +34,7 @@ class WorkerThread(QThread):
             success, message = self.sistema.executar_atualizacao()
         self.operation_completed.emit(success, message)
 
+
 class CleanCrowUI(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -32,7 +45,8 @@ class CleanCrowUI(QMainWindow):
 
     def setup_ui(self):
         # Configuração principal da janela
-        self.setStyleSheet("""
+        self.setStyleSheet(
+            """
             QMainWindow {
                 background-color: #111111;
                 color: #ffffff;
@@ -40,7 +54,8 @@ class CleanCrowUI(QMainWindow):
             QLabel {
                 color: #ffffff;
             }
-        """)
+        """
+        )
 
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
@@ -54,35 +69,41 @@ class CleanCrowUI(QMainWindow):
         header_widget = QWidget()
         header_layout = QHBoxLayout()
         header_widget.setLayout(header_layout)
-        
+
         # Logo
         logo_label = QLabel()
-        logo_pixmap = QPixmap("crowico.ico").scaled(48, 48, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        logo_pixmap = QPixmap("crowico.ico").scaled(
+            48, 48, Qt.KeepAspectRatio, Qt.SmoothTransformation
+        )
         logo_label.setPixmap(logo_pixmap)
         header_layout.addWidget(logo_label)
-        
+
         # Título
         title_label = QLabel("CLEANCROW")
-        title_label.setStyleSheet("""
+        title_label.setStyleSheet(
+            """
             QLabel {
                 font-size: 32px;
                 font-weight: bold;
                 color: #e74c3c;
                 padding-left: 10px;
             }
-        """)
+        """
+        )
         header_layout.addWidget(title_label)
         header_layout.addStretch()
-        
+
         self.main_layout.addWidget(header_widget)
 
         # Descrição
         description = QLabel("Otimizador de Sistema Completo")
-        description.setStyleSheet("""
+        description.setStyleSheet(
+            """
             font-size: 16px; 
             color: #bdc3c7;
             padding-bottom: 10px;
-        """)
+        """
+        )
         description.setAlignment(Qt.AlignCenter)
         self.main_layout.addWidget(description)
 
@@ -94,11 +115,13 @@ class CleanCrowUI(QMainWindow):
 
         # Label de instrução
         self.label = QLabel("Selecione a operação desejada:")
-        self.label.setStyleSheet("""
+        self.label.setStyleSheet(
+            """
             font-size: 14px; 
             color: #ecf0f1;
             padding-top: 10px;
-        """)
+        """
+        )
         self.main_layout.addWidget(self.label)
 
         # Layout dos botões
@@ -110,7 +133,8 @@ class CleanCrowUI(QMainWindow):
         self.limpar_button = QPushButton(" LIMPAR SISTEMA")
         self.limpar_button.setIcon(QIcon("103414.png"))
         self.limpar_button.setIconSize(QSize(32, 32))  # Ícone maior
-        self.limpar_button.setStyleSheet("""
+        self.limpar_button.setStyleSheet(
+            """
             QPushButton {
                 background-color: #e74c3c;
                 color: white;
@@ -127,7 +151,8 @@ class CleanCrowUI(QMainWindow):
             QPushButton:disabled {
                 background-color: #7f8c8d;
             }
-        """)
+        """
+        )
         self.limpar_button.clicked.connect(self.iniciar_limpeza)
         self.button_layout.addWidget(self.limpar_button)
 
@@ -135,7 +160,8 @@ class CleanCrowUI(QMainWindow):
         self.atualizar_button = QPushButton(" ATUALIZAR SISTEMA")
         self.atualizar_button.setIcon(QIcon("159612.png"))
         self.atualizar_button.setIconSize(QSize(32, 32))  # Ícone maior
-        self.atualizar_button.setStyleSheet("""
+        self.atualizar_button.setStyleSheet(
+            """
             QPushButton {
                 background-color: #2c3e50;
                 color: white;
@@ -152,29 +178,34 @@ class CleanCrowUI(QMainWindow):
             QPushButton:disabled {
                 background-color: #7f8c8d;
             }
-        """)
+        """
+        )
         self.atualizar_button.clicked.connect(self.iniciar_atualizacao)
         self.button_layout.addWidget(self.atualizar_button)
 
         # Área de status
         status_frame = QFrame()
-        status_frame.setStyleSheet("""
+        status_frame.setStyleSheet(
+            """
             background-color: #222222; 
             border-radius: 8px; 
             padding: 15px;
-        """)
+        """
+        )
         status_layout = QVBoxLayout()
         status_layout.setSpacing(15)
         status_frame.setLayout(status_layout)
 
         # Label de progresso
         self.progress_label = QLabel("Pronto para iniciar")
-        self.progress_label.setStyleSheet("""
+        self.progress_label.setStyleSheet(
+            """
             font-size: 18px; 
             color: #ecf0f1;
             font-weight: bold;
             padding: 10px;
-        """)
+        """
+        )
         self.progress_label.setAlignment(Qt.AlignCenter)
         self.progress_label.setMinimumHeight(50)  # Garante espaço suficiente
         status_layout.addWidget(self.progress_label)
@@ -183,7 +214,8 @@ class CleanCrowUI(QMainWindow):
         self.progress_bar = QProgressBar()
         self.progress_bar.setRange(0, 100)
         self.progress_bar.setTextVisible(False)
-        self.progress_bar.setStyleSheet("""
+        self.progress_bar.setStyleSheet(
+            """
             QProgressBar {
                 border: 2px solid #333333;
                 border-radius: 6px;
@@ -195,20 +227,11 @@ class CleanCrowUI(QMainWindow):
                 width: 12px;
                 border-radius: 5px;
             }
-        """)
+        """
+        )
         status_layout.addWidget(self.progress_bar)
 
         self.main_layout.addWidget(status_frame)
-
-        # Rodapé
-        footer = QLabel("© 2025 CleanCrow - Todos os direitos reservados")
-        footer.setStyleSheet("""
-            font-size: 11px; 
-            color: #7f8c8d; 
-            padding-top: 15px;
-        """)
-        footer.setAlignment(Qt.AlignCenter)
-        self.main_layout.addWidget(footer)
 
         self.worker_thread = None
 
@@ -217,8 +240,9 @@ class CleanCrowUI(QMainWindow):
         self.atualizar_button.setEnabled(False)
         self.progress_bar.setValue(0)
         self.progress_label.setText("Iniciando limpeza do sistema...")
-        
-        self.progress_bar.setStyleSheet("""
+
+        self.progress_bar.setStyleSheet(
+            """
             QProgressBar {
                 border: 2px solid #333333;
                 border-radius: 6px;
@@ -230,7 +254,8 @@ class CleanCrowUI(QMainWindow):
                 width: 12px;
                 border-radius: 5px;
             }
-        """)
+        """
+        )
 
         self.worker_thread = WorkerThread("limpeza")
         self.worker_thread.progress_updated.connect(self.atualizar_progresso)
@@ -241,8 +266,9 @@ class CleanCrowUI(QMainWindow):
         self.limpar_button.setEnabled(False)
         self.atualizar_button.setEnabled(False)
         self.progress_label.setText("Iniciando atualização do sistema...")
-        
-        self.progress_bar.setStyleSheet("""
+
+        self.progress_bar.setStyleSheet(
+            """
             QProgressBar {
                 border: 2px solid #333333;
                 border-radius: 6px;
@@ -254,7 +280,8 @@ class CleanCrowUI(QMainWindow):
                 width: 12px;
                 border-radius: 5px;
             }
-        """)
+        """
+        )
 
         self.worker_thread = WorkerThread("atualizacao")
         self.worker_thread.operation_completed.connect(self.operacao_concluida)
@@ -270,7 +297,8 @@ class CleanCrowUI(QMainWindow):
             msg_box.setWindowTitle("Sucesso")
             msg_box.setText(message)
             msg_box.setIcon(QMessageBox.Information)
-            msg_box.setStyleSheet("""
+            msg_box.setStyleSheet(
+                """
                 QMessageBox {
                     background-color: #111111;
                     color: white;
@@ -278,10 +306,12 @@ class CleanCrowUI(QMainWindow):
                 QLabel {
                     color: white;
                 }
-            """)
+            """
+            )
             msg_box.exec_()
-            
-            self.progress_bar.setStyleSheet("""
+
+            self.progress_bar.setStyleSheet(
+                """
                 QProgressBar {
                     border: 2px solid #333333;
                     border-radius: 6px;
@@ -293,13 +323,15 @@ class CleanCrowUI(QMainWindow):
                     width: 12px;
                     border-radius: 5px;
                 }
-            """)
+            """
+            )
         else:
             msg_box = QMessageBox()
             msg_box.setWindowTitle("Erro")
             msg_box.setText(message)
             msg_box.setIcon(QMessageBox.Critical)
-            msg_box.setStyleSheet("""
+            msg_box.setStyleSheet(
+                """
                 QMessageBox {
                     background-color: #111111;
                     color: white;
@@ -307,7 +339,8 @@ class CleanCrowUI(QMainWindow):
                 QLabel {
                     color: white;
                 }
-            """)
+            """
+            )
             msg_box.exec_()
 
         self.limpar_button.setEnabled(True)

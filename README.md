@@ -1,48 +1,53 @@
-# Funcionalidades do Software de Limpeza e Atualização do Sistema
+# CleanCrow - Otimizador e Atualizador de Sistema para Windows
 
-Este software desenvolvido em Python utilizando a biblioteca Tkinter oferece uma interface gráfica para realizar diversas operações de limpeza, otimização e atualização do sistema operacional Windows.
+CleanCrow é um software desenvolvido em Python com interface gráfica moderna baseada em PyQt5, projetado para facilitar a limpeza, otimização e atualização do sistema operacional Windows de forma simples, visual e eficiente.
 
-## Funcionalidades Detalhadas:
+## Principais Funcionalidades
 
-1. **Limpeza do Sistema:**
-   - Remove arquivos temporários das pastas %TEMP%, C:\\Windows\\Temp e C:\\Windows\\Prefetch.
-   - Limpa logs do sistema utilizando o utilitário wevtutil.exe.
-   - Interrompe serviços de atualização do Windows, limpa a pasta SoftwareDistribution e reinicia os serviços.
-   - Executa o comando ipconfig /flushdns para limpar o cache DNS.
-   - Utiliza RunDll32.exe para limpar dados de navegação do Microsoft Edge.
+- **Limpeza Completa do Sistema:**  
+  Remove arquivos temporários (%TEMP%, C:\Windows\Temp, C:\Windows\Prefetch), limpa logs do Windows, cache DNS, arquivos de atualização antigos, miniaturas, dumps de memória, relatórios de erros, cache da loja do Windows, entre outros resíduos que ocupam espaço e podem afetar o desempenho.
 
-2. **Limpeza de Navegadores:**
-   - Remove cache e cookies dos navegadores Google Chrome, Mozilla Firefox, Opera e Brave utilizando comandos de linha.
+- **Limpeza de Navegadores:**  
+  Limpa cache, cookies e dados de navegação dos principais navegadores, incluindo Google Chrome, Mozilla Firefox, Opera, Brave, Vivaldi, Safari, Tor, Maxthon, Waterfox e Pale Moon.
 
-3. **Remoção de Programas:**
-   - Verifica a existência do utilitário FlashUtil*.exe e o remove caso encontrado.
+- **Remoção de Programas e Bloatware:**  
+  Remove utilitários desnecessários (como FlashUtil*.exe) e bloatwares comuns do Windows, liberando recursos e melhorando a inicialização.
 
-4. **Otimização do Sistema:**
-   - Executa o utilitário cleanmgr /sagerun:1 para liberar espaço em disco.
-   - Verifica a integridade do disco com chkdsk e agenda uma verificação completa no próximo reinício.
-   - Desfragmenta o disco utilizando o comando defrag C: /O.
-   - Utiliza o utilitário dism para limpeza de componentes de sistema desnecessários e atualizações supercedidas.
+- **Otimização de Disco e Sistema:**  
+  Executa limpeza de disco (cleanmgr), verifica e agenda correção de erros no disco (chkdsk), desfragmenta o disco (defrag), limpa componentes de sistema (DISM), compacta arquivos do sistema, desativa hibernação e inicialização automática de programas indesejados.
 
-5. **Outras Operações de Otimização:**
-   - Compacta arquivos do sistema utilizando o comando compact /compactos:always /exe.
-   - Desativa a hibernação com powercfg -h off.
-   - Limpa diretórios de arquivos temporários adicionais em %USERPROFILE%\\AppData\\Local\\Temp e %USERPROFILE%\\AppData\\LocalLow\\Temp.
-   - Configura a inicialização de programas indesejados no registro do Windows para evitar execuções automáticas.
+- **Ajustes de Desligamento:**  
+  Otimiza o tempo de desligamento do Windows ajustando parâmetros no registro para encerramento mais rápido de aplicativos e serviços.
 
-6. **Otimização de Desligamento:**
-   - Ajusta os tempos de espera para encerramento de aplicativos e serviços no registro do Windows para otimizar o processo de desligamento.
+- **Atualização de Pacotes:**  
+  Atualiza todos os programas instalados via Windows Package Manager (winget) com um clique, mantendo o sistema sempre atualizado e seguro.
 
-7. **Atualização de Pacotes:**
-   - Implementa a funcionalidade de atualização de pacotes utilizando o comando `winget upgrade --all`, garantindo que todos os pacotes instalados via Windows Package Manager (winget) estejam na versão mais recente.
+## Como Usar
 
-## Como Usar:
+- **Limpeza do Sistema:**  
+  Clique no botão **"LIMPAR SISTEMA"** para iniciar todas as operações de limpeza e otimização. O progresso é exibido em tempo real na barra de progresso e no status.
 
-- **Interface Gráfica:** Basta clicar no botão "Limpar" para iniciar todas as operações de limpeza e otimização. Uma barra de progresso acompanha cada operação.
-- **Atualização de Pacotes:** Utilize o botão "Atualizar" para executar a atualização de pacotes via `winget upgrade --all`. A barra de progresso indica o progresso da atualização.
+- **Atualização do Sistema:**  
+  Clique no botão **"ATUALIZAR SISTEMA"** para atualizar todos os pacotes instalados via winget. O status da operação será exibido na interface.
 
-### Importante:
+- **Interface Moderna:**  
+  A interface é intuitiva, com botões grandes, ícones e feedback visual para cada etapa. Mensagens de sucesso ou erro são exibidas ao final de cada operação.
 
-- **Execução como Administrador:** Para garantir que todas as operações sejam concluídas com sucesso, execute o software com permissões de administrador.
-- **Feedback de Erros:** Caso ocorra algum erro durante qualquer uma das operações, uma mensagem de erro será exibida para orientar o usuário sobre o problema.
+## Requisitos e Observações
 
-Este software proporciona uma maneira conveniente e eficiente de manter seu sistema operacional Windows limpo, otimizado e atualizado, contribuindo para melhorar o desempenho e a segurança do seu computador.
+- **Permissões de Administrador:**  
+  Execute o CleanCrow como administrador para garantir que todas as operações sejam realizadas corretamente.
+
+- **Compatibilidade:**  
+  Compatível apenas com Windows (requer Python 3.x, PyQt5 e winget instalado para atualização de pacotes).
+
+- **Feedback de Erros:**  
+  Caso ocorra algum erro durante as operações, uma mensagem detalhada será exibida para auxiliar na resolução.
+
+## Licença
+
+Este software é licenciado sob a GNU GPL v3.0. Consulte o arquivo LICENSE para mais informações.
+
+---
+
+Mantenha seu Windows limpo, otimizado e atualizado com praticidade e segurança usando o CleanCrow!
