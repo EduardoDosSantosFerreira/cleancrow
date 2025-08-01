@@ -14,5 +14,5 @@ dist/* linguist-vendored
 # Garantir que arquivos .tex não sejam considerados (caso existam por engano)
 *.tex linguist-detectable=false
 
-# Tem um pouco de HTML por causa do site, mas é pouco
-*.html linguist-detectable=true
+# Ignorar arquivos HTML como código
+*.html linguist-detectable=false
